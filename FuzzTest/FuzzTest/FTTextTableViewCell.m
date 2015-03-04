@@ -14,7 +14,7 @@
     // Initialization code
     [super awakeFromNib];
     [self.textLabel setNumberOfLines:0];
-    [self.textLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [self.textLabel setLineBreakMode:NSLineBreakByCharWrapping];
     
     [self.textLabel setFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
 }

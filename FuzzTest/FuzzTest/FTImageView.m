@@ -37,7 +37,6 @@
 }
 
 -(void) setUrl:(NSString *)url {
-    
     [_loadingIndicator setHidden:NO];
     [_loadingIndicator startAnimating];
     [_loadingIndicator setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];

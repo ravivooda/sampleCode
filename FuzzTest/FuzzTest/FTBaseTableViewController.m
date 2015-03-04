@@ -54,13 +54,18 @@
     switch (currObject.type) {
         case DATA_TYPE_TEXT:{
             NSString * tweetTextString = [currObject data];
+            NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+            paragraphStyle.alignment = NSTextAlignmentLeft;
+            
             NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   [UIFont systemFontOfSize:[UIFont systemFontSize]], NSFontAttributeName,
+                                                  paragraphStyle, NSParagraphStyleAttributeName,
                                                   nil];
             
-            CGRect textSize =[tweetTextString boundingRectWithSize:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX) options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:attributesDictionary context:nil];
+            CGRect textSize =[tweetTextString boundingRectWithSize:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX) options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine) attributes:attributesDictionary context:nil];
             
-            return MAX(textSize.size.height, 44) + 5;
+            return MAX(textSize.size.height, 44) + 20;
         }
             break;
         case DATA_TYPE_IMAGE: {
