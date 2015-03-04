@@ -18,6 +18,7 @@
 @implementation FTImageTableViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 

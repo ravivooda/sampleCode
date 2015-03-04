@@ -37,10 +37,12 @@
 }
 
 -(void) setUrl:(NSString *)url {
+    [self addSubview:_loadingIndicator];
+    
     [_loadingIndicator setHidden:NO];
     [_loadingIndicator startAnimating];
-    [_loadingIndicator setFrame:self.frame];
-//    [self setImage:nil];
+    [_loadingIndicator setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [self setImage:nil];
     @synchronized(self) {
         _url = url;
         NSString *localURL = url;
@@ -51,15 +53,14 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 @synchronized(self) {
                     if ([localURL isEqualToString:_url]) {
-//                        [_loadingIndicator setHidden:YES];
-//                        [_loadingIndicator stopAnimating];
-//                        if (error) {
-//                            NSLog(@"An error occurred in fetching images");
-//                            NSLog(localURL);
-//                            [self setImage:_errorImage];
-//                        } else {
-//                            [self setImage:image];
-//                        }
+                        [_loadingIndicator setHidden:YES];
+                        [_loadingIndicator stopAnimating];
+                        if (error) {
+                            NSLog(@"An error occurred in fetching images");
+                            [self setImage:_errorImage];
+                        } else {
+                            [self setImage:image];
+                        }
                     }
                 }
             });

@@ -28,6 +28,10 @@
 -(void) setItem:(FTObject *)item {
     _item = item;
     [self.textLabel setText:item.data];
+    
+    if (!item.data || [item.data isEqualToString:@""]) {
+        [self.textLabel setText:@"Empty text"];
+    }
 }
 
 @end
