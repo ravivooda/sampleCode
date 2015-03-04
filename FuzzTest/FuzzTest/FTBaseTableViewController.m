@@ -31,6 +31,15 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat navigationBarHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat tabBarHeight = self.tabBarController.tabBar.frame.size.height;
+    self.tableView.contentInset =
+    self.tableView.scrollIndicatorInsets =
+    UIEdgeInsetsMake(statusBarHeight + navigationBarHeight, 0, tabBarHeight, 0);
 }
 
 - (void)didReceiveMemoryWarning {

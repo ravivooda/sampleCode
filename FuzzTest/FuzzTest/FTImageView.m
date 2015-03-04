@@ -37,7 +37,6 @@
 }
 
 -(void) setUrl:(NSString *)url {
-    [self addSubview:_loadingIndicator];
     
     [_loadingIndicator setHidden:NO];
     [_loadingIndicator startAnimating];
